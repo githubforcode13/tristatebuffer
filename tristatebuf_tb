@@ -1,0 +1,23 @@
+module tristate_tb();
+reg in,en;
+wire out1,out2,out3;
+tristatebuf t1(in,en,out1);
+tristate_hardwired t2(in,en,out2);
+tristate_primitive t3(in,en,out3);
+always #5 in = ~in;
+initial begin
+$dumpfile("out.vcd");
+$dumpvars(1,tristate_tb);
+in = 0;
+en = 0;
+#20;
+en = 1;
+#20;
+en = 0;
+#20;
+in = 1;
+en = 1;
+#20;
+$finish;
+end
+endmodule
