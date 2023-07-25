@@ -1,0 +1,7 @@
+module tristate_primitive(
+input in,
+input en,
+output out
+ );
+bufif1(out,in,en);
+endmodule
